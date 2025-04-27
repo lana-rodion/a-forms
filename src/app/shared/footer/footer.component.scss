@@ -1,0 +1,10 @@
+@charset "utf-8";
+@use "../../../styles.scss";
+
+:host {
+  width: 100vw;
+  height: max-content;
+  padding: 1.5rem 3rem;
+  border-top: 1px solid rgba(204, 204, 204, 0.7);
+  background-color: #fff;
+}

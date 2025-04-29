@@ -1,0 +1,150 @@
+@charset "utf-8";
+
+label.form-label {
+  color: #888;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.form-select {
+  min-height: 45px;
+  border-radius: 5px;
+  border-color: #999;
+  font-size: 15px;
+  font-family: "Quicksand";
+  font-weight: 500;
+}
+
+textarea.form-control {
+  padding: 15px;
+}
+
+.form-control {
+  min-height: 45px;
+  padding: 15px;
+  font-size: 15px;
+  font-family: "Quicksand";
+  font-weight: 500;
+  border-radius: 5px;
+  border-color: gray;
+
+  &.is-invalid[type="date"] {
+    background-image: none;
+  }
+
+  &.is-invalid:not([type="date"]) {
+    padding-right: 15px;
+    background-image: none;
+  }
+
+  &::placeholder {
+    color: gray;
+  }
+
+  &[type="number"] {
+    text-align: right;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+}
+
+.form-control-no-input {
+  @extend .form-control;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.dropdown-item.disabled,
+.dropdown-item:disabled,
+.btn-check[disabled] + .btn,
+.btn-check:disabled + .btn,
+.form-control:disabled,
+.form-control-no-input:disabled,
+.form-select:disabled {
+  background-color: #aaa;
+  color: #444;
+  font-weight: 500;
+  border-color: #ddd;
+  opacity: 1;
+}
+
+.form-select-no-input {
+  @extend .form-select;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.form-check-input[type="radio"] {
+  width: 18px;
+  height: 18px;
+
+  &:checked {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3.8' stroke='white' stroke-width='0.8'  style='fill-opacity: 0;'/></svg>");
+  }
+}
+
+.form-check-input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  min-height: 18px;
+  border: 1px solid #ccc !important;
+
+  &:checked {
+    border: 1px solid #333 !important;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><rect width='7.5' height='7.5' x='-3.75' y='-3.75' rx='1' stroke-width='1' style='fill-opacity: 0;' stroke='white' /></svg>");
+  }
+
+  &.success {
+    background-color: white;
+    border-color: #ccc;
+
+    &:checked {
+      background-color: green;
+      border-color: green;
+    }
+
+    &:disabled {
+      opacity: 1;
+    }
+  }
+}
+
+// Removed natif arrows
+// Chrome, Safari, Edge, Opera
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none !important;
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+// Firefox
+input[type="number"] {
+  appearance: none !important;
+  -moz-appearance: textfield;
+}
+
+// Removed natif box-shadow and outline
+input:focus,
+input:active:focus,
+input.active:focus,
+input.focus,
+input:active.focus,
+input.active.focu,
+textarea:focus,
+textarea:active:focus,
+textarea.active:focus,
+textarea.focus,
+textarea:active.focus,
+textarea.active.focus {
+  border-color: #ccc !important;
+  outline: none !important;
+  box-shadow: none !important;
+}

@@ -27,8 +27,9 @@
   <h3>
     {{ titleHeader }}
   </h3>
+  <ng-content select="[header-content]">Header items</ng-content>
 </header>
 <main>
-  <ng-content select="[body]">Default body</ng-content>
+  <ng-content select="[main]">Default body</ng-content>
 </main>
 <app-footer></app-footer>

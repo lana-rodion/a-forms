@@ -1,5 +1,15 @@
-@charset "utf-8";
 /* Add global styles to this file, and also import other style files */
+@use "./assets/scss/typography.scss";
+@use "./assets/scss/helpers/normalize.scss";
+@use "./assets/scss/helpers/utilities";
+@use "./assets/scss/elements/containers";
+@use "./assets/scss/elements/tables";
+@use "./assets/scss/forms/inputs";
+@mixin icon-size($width: null, $height: null) {
+  width: $width;
+  height: $height;
+}
+
 :host {
   --bright-blue: oklch(51.01% 0.274 263.83);
   --electric-violet: oklch(53.18% 0.28 296.97);
@@ -28,9 +38,6 @@
 
   --pill-accent: var(--bright-blue);
 
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol";
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -57,9 +64,6 @@ h1 {
   line-height: 100%;
   letter-spacing: -0.125rem;
   margin: 0;
-  font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol";
 }
 
 p {
@@ -71,7 +75,7 @@ main {
   width: 100%;
   min-height: 100%;
   display: flex;
-  padding: 2rem;
+  padding: 0;
   box-sizing: inherit;
   position: relative;
 }
@@ -80,14 +84,7 @@ main {
   max-width: 9.2rem;
 }
 
-/**
-* FLEX
-*/
-
-.flex-column {
-  flex-direction: column;
-}
-
+/** FLEX */
 .align-items-center {
   align-items: center;
 }
@@ -105,12 +102,6 @@ main {
 
 .content p {
   margin-top: 1.5rem;
-}
-
-.divider {
-  width: 1px;
-  background: var(--red-to-pink-to-purple-vertical-gradient);
-  margin-inline: 0.5rem;
 }
 
 .pill-group {
@@ -131,7 +122,6 @@ main {
   border-radius: 2.75rem;
   border: 0;
   transition: background 0.3s ease;
-  font-family: var(--inter-font);
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 500;
@@ -177,16 +167,46 @@ main {
   fill: var(--gray-900);
 }
 
+/** ICONS */
+.icon {
+  display: inline-block;
+}
+
+.icon-search {
+  height: 20px;
+  width: 20px;
+  background-color: gray;
+  -webkit-mask: url("./assets/icons/magnify.svg") no-repeat center;
+  mask: url("./assets/icons/magnify.svg") no-repeat center;
+}
+
+.arrow {
+  width: 8px;
+  height: 11px;
+  display: inline-block;
+
+  &.arrow--right {
+    background: url("./assets/icons/arrow_right.svg") no-repeat;
+    background-position: center center;
+  }
+
+  &.arrow--down {
+    background: url("./assets/icons/arrow_right.svg") no-repeat;
+    background-position: center center;
+    transform: rotate(90deg);
+  }
+
+  &.start {
+    margin-right: 8px;
+  }
+  &.end {
+    margin-left: 8px;
+  }
+}
+
 @media screen and (max-width: 650px) {
   .content {
     flex-direction: column;
     width: max-content;
-  }
-
-  .divider {
-    height: 1px;
-    width: 100%;
-    background: var(--red-to-pink-to-purple-horizontal-gradient);
-    margin-block: 1.5rem;
   }
 }

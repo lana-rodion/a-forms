@@ -1,0 +1,284 @@
+@charset "utf-8";
+
+$font-url-light: "../fonts/Quicksand/Quicksand-Light.ttf";
+$font-url-regular: "../fonts/Quicksand/Quicksand-Regular.ttf";
+$font-url-medium: "../fonts/Quicksand/Quicksand-Medium.ttf";
+$font-url-semibold: "../fonts/Quicksand/Quicksand-SemiBold.ttf";
+$font-url-bold: "../fonts/Quicksand/Quicksand-Bold.ttf";
+
+// Text
+// start theme-color-variables
+$primary: #2e384d;
+$primary-light: #949494;
+$primary-medium: #666;
+$text-primary: #212529;
+$text-primary-medium: #6c757d;
+$placeholder-color: #949494;
+
+// gray-color-variables
+$white: #fff;
+$gray-100: #f8f9fa;
+$gray-200: #f2f2f2;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black: #000 !default;
+
+// start custom gray-color-variables
+$ghost-white: #f9faff;
+$gray-silver: #9aa3ad;
+$gray-cool: #8798ad;
+$gray-cool-light: #e0e7ff;
+$gray-cool-medium: #b0bac9;
+$gray-cool-dark: #67717e;
+$gray-medium: #949494;
+$gray-granite: #666;
+// end custom gray-color-variables
+
+/* ======= FONTS variables ====== */
+$font-weight-thin: 100 !default;
+$font-weight-light: 300 !default;
+$font-weight-regular: 400 !default;
+$font-weight-medium: 500 !default;
+$font-weight-semibold: 600 !default;
+$font-weight-bold: 700 !default;
+$font-weight-bolder: bolder !default;
+$font-weight-extrabold: 800 !default;
+$font-weight-base: $font-weight-medium !default;
+
+// Assumes the browser default, typically 1rem = 16px
+$font-size-base: 0.875rem !default; // 14px
+$ratio: 1.15;
+$ratio-large: 1.25;
+
+// For PRISM based on $font-size-base: 14px !default;
+$h1-font-size: $font-size-base * 2.42857 !default; // 34px
+$h2-font-size: $font-size-base * 2 !default; // 28px
+$h3-font-size: $font-size-base * 1.42857 !default; // 20px
+$h4-font-size: $font-size-base * 1.2857 !default; // 18px
+$h5-font-size: $font-size-base * 1.14285 !default; // 16px
+$h6-font-size: $font-size-base !default;
+
+// scss-docs-start font-sizes
+$font-sizes: (
+  1: $h1-font-size,
+  2: $h2-font-size,
+  3: $h3-font-size,
+  4: $h4-font-size,
+  5: $h5-font-size,
+  6: $h6-font-size,
+) !default;
+// scss-docs-end font-sizes
+
+/* ======= FONTS ====== */
+@font-face {
+  font-family: "Quicksand";
+  src: url($font-url-light) format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url($font-url-regular) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url($font-url-medium) format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url($font-url-semibold) format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url($font-url-bold) format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/**
+ * 1. Change the default font family in all browsers (opinionated).
+ * 2. Correct the line height in all browsers.
+ * 3. Prevent adjustments of font size after orientation changes in
+ *    IE on Windows Phone and in iOS.
+ */
+
+html {
+  font-family: sans-serif; /* 1 */
+  line-height: 1.15; /* 2 */
+  -ms-text-size-adjust: 100%; /* 3 */
+  -webkit-text-size-adjust: 100%; /* 3 */
+}
+
+body {
+  font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  color: $text-primary;
+  font-size: 0.875rem; // 14px
+  font-weight: 500;
+}
+
+p,
+div {
+  font-size: 0.875rem; // 14px
+  letter-spacing: normal;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+h1 {
+  font-size: $h1-font-size; // 34px
+  color: $primary;
+}
+
+h2 {
+  font-size: $h2-font-size; // 28px
+  color: $gray-cool-dark;
+}
+
+h3 {
+  font-size: $h3-font-size;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: normal;
+}
+
+h4 {
+  font-size: $h4-font-size;
+}
+
+h5 {
+  font-size: $h5-font-size;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Quicksand";
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+h6 {
+  font-size: $h6-font-size;
+  font-family: "Quicksand";
+  font-weight: 500;
+}
+
+h5,
+h6 {
+  letter-spacing: 0.15px;
+  line-height: 1.3;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  color: $gray-cool-dark;
+}
+
+button {
+  font-size: 15px;
+  font-family: "Quicksand";
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* ======= FONTS CUSTOM PROPERTIES ====== */
+
+// Subtitle: smaller than headline, reserved for medium-emphasis text that is shorter in length
+
+.subtitle,
+.input-label {
+  color: $primary;
+  font-family: "Quicksand";
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.1px;
+  text-transform: uppercase;
+}
+
+// Caption-img: Used sparingly to annotate imagery
+
+.caption-img {
+  font-family: "Quicksand";
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.4px;
+}
+
+.text-white {
+  color: $white;
+}
+
+.text-small {
+  font-size: 12px;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-bold {
+  font-weight: 700;
+}
+
+.break-word {
+  overflow-wrap: break-word;
+}
+
+.v-align-middle {
+  vertical-align: middle !important;
+}
+
+.text-overflow-hidden {
+  /* Both of the following are required for text-overflow */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.overflow--ellipsis {
+  text-overflow: ellipsis;
+}
+
+.overflow--ellipsis-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis ellipsis;
+}

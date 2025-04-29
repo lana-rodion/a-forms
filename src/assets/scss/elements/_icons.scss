@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+@mixin icon-size($width: null, $height: null) {
+  width: $width;
+  height: $height;
+}
+
+.icon {
+  display: inline-block;
+}
+
+.icon-search {
+  height: 20px;
+  width: 20px;
+  background-color: gray;
+  -webkit-mask: url("../../icons/magnify.svg") no-repeat center;
+  mask: url("../../icons/magnify.svg") no-repeat center;
+}
+
+.icon-arrow-rounded-right {
+  -webkit-mask: url("../../icons/arrow_right.svg") no-repeat center;
+  mask: url("../../icons/arrow_right.svg") no-repeat center;
+}

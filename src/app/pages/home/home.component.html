@@ -1,3 +1,27 @@
 <app-page-template [titleHeader]="'HelloTitle'">
-  <div body>Welcome in the body of the example</div>
+  <section header-content>Here Header items</section>
+  <section main>
+    <div class="left-side">
+      <ul class="nav nav-tabs">
+        <li [ngClass]="{active: tab==1}" (click)="tab=1">
+          <div class="icon icon-arrow-right"></div>Home
+        </li>
+        <li [ngClass]="{active: tab==2}" (click)="tab=2">
+          <div class="icon icon-arrow-right"></div>Profile
+        </li>
+        <li [ngClass]="{active: tab==3}" (click)="tab=3">
+          <div class="icon icon-arrow-right"></div>Messages
+        </li>
+      </ul>
+
+    </div>
+    <div class="right-side">
+      <div [ngSwitch]="tab">
+        <div *ngSwitchCase="1">Content 1</div>
+        <div *ngSwitchCase="2">Content 2</div>
+        <div *ngSwitchCase="3">Content 3</div>
+        <div *ngSwitchDefault>Default</div>
+      </div>
+    </div>
+  </section>
 </app-page-template>

@@ -4,6 +4,7 @@
 @use "./assets/scss/helpers/utilities";
 @use "./assets/scss/elements/containers";
 @use "./assets/scss/elements/tables";
+@use "./assets/scss/elements/icons";
 @use "./assets/scss/forms/inputs";
 @mixin icon-size($width: null, $height: null) {
   width: $width;
@@ -165,43 +166,6 @@ main {
 
 .social-links a:hover svg path {
   fill: var(--gray-900);
-}
-
-/** ICONS */
-.icon {
-  display: inline-block;
-}
-
-.icon-search {
-  height: 20px;
-  width: 20px;
-  background-color: gray;
-  -webkit-mask: url("./assets/icons/magnify.svg") no-repeat center;
-  mask: url("./assets/icons/magnify.svg") no-repeat center;
-}
-
-.arrow {
-  width: 8px;
-  height: 11px;
-  display: inline-block;
-
-  &.arrow--right {
-    background: url("./assets/icons/arrow_right.svg") no-repeat;
-    background-position: center center;
-  }
-
-  &.arrow--down {
-    background: url("./assets/icons/arrow_right.svg") no-repeat;
-    background-position: center center;
-    transform: rotate(90deg);
-  }
-
-  &.start {
-    margin-right: 8px;
-  }
-  &.end {
-    margin-left: 8px;
-  }
 }
 
 @media screen and (max-width: 650px) {

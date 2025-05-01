@@ -1,4 +1,4 @@
-<app-page-template [titleHeader]="'Angular Forms'">
+<app-page-template [titleHeader]="titleHeader">
   <div header-content class="pill-group">
     <div class="pill">
       <a class="" [routerLink]="['/form/template-driven-form']" [routerLinkActive]="'selected'"
@@ -17,7 +17,7 @@
   <section main>
     <div class="left-side">
       <ul>
-        <li [ngClass]="{active: tab=='conclusions'}" (click)="tab='menu'">
+        <li [ngClass]="{active: tab=='menu'}" (click)="tab='menu'">
           <div class="icon icon-arrow-right"></div>Menu
         </li>
         <li [ngClass]="{active: tab=='tdforms'}" (click)="tab='tdforms'">
@@ -31,9 +31,9 @@
     </div>
     <div class="right-side">
       <div [ngSwitch]="tab">
+        <div *ngSwitchCase="'menu'">Pages menu</div>
         <div *ngSwitchCase="'tdforms'">Content TD forms</div>
         <div *ngSwitchCase="'reactiveforms'">Content Reactive forms</div>
-        <div *ngSwitchCase="'menu'">Pages menu</div>
         <div *ngSwitchDefault>Select the tab to display its content</div>
       </div>
     </div>

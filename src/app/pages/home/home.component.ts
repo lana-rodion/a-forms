@@ -9,6 +9,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  titleHeader: string = 'Home';
+  titleHeader: string = 'Angular Forms';
   tab: string = 'tdforms';
 }

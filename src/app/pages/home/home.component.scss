@@ -1,6 +1,5 @@
 @charset "utf-8";
 @use "../../../styles.scss";
-/* @use "../../../assets/scss/elements/arrows"; */
 
 :host {
   width: 100vw;
@@ -56,6 +55,17 @@
       color: white;
       font-weight: 600;
       background: var(--red-to-pink-to-purple-horizontal-gradient);
+    }
+  }
+
+  .pill-group .pill {
+    height: 3rem;
+    font-size: 1rem;
+    padding: 0 1rem;
+
+    a {
+      text-decoration: none;
+      color: inherit;
     }
   }
 }

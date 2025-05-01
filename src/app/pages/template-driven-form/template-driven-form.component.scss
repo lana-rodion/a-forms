@@ -1,0 +1,18 @@
+@charset "utf-8";
+@use "../../../styles.scss";
+
+:host {
+  width: 100vw;
+  height: 100vh;
+
+  .pill-group .pill {
+    height: 3rem;
+    font-size: 1rem;
+    padding: 0 1rem;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+}

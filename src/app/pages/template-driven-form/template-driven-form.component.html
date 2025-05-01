@@ -1,4 +1,12 @@
-<app-page-template>
-  <div card-title>Hello</div>
-  <div card-body>Welcome to the example</div>
+<app-page-template [titleHeader]="'Template-Driven Forms'">
+  <div header-content class="pill-group">
+    <div class="pill">
+      <a class="" [routerLink]="['/home']" [routerLinkActive]="'selected'" [routerLinkActiveOptions]="{ exact: true }"
+        ariaCurrentWhenActive="page">
+        Home
+      </a>
+    </div>
+  </div>
+
+  <section main></section>
 </app-page-template>

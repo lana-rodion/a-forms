@@ -6,6 +6,4 @@ import { HomeComponent } from './pages/home/home.component';
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'form/template-driven-form', component: TemplateDrivenFormComponent },
-  { path: 'form/reactive-form', component: ReactiveFormComponent },
 ];

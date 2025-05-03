@@ -1,10 +1,16 @@
 import { Component } from '@angular/core';
 import { PageTemplateComponent } from '../../shared/page-template/page-template.component';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { TemplateDrivenFormComponent } from '../template-driven-form/template-driven-form.component';
+import { ReactiveFormComponent } from '../reactive-form/reactive-form.component';
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, PageTemplateComponent, RouterLink, RouterLinkActive],
+  imports: [
+    CommonModule,
+    PageTemplateComponent,
+    TemplateDrivenFormComponent,
+    ReactiveFormComponent,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

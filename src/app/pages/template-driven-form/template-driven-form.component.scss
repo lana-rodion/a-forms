@@ -5,14 +5,128 @@
   width: 100vw;
   height: 100vh;
 
-  .pill-group .pill {
-    height: 3rem;
-    font-size: 1rem;
-    padding: 0 1rem;
+  .intro {
+    display: flex;
+    flex-direction: column;
+    height: 33vh;
+    overflow: auto;
+    margin-bottom: 1rem;
 
-    a {
-      text-decoration: none;
-      color: inherit;
+    p {
+      font-size: 1.05rem;
+      color: #888;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .ng-valid[required],
+  .ng-valid.required {
+    border-left: 5px solid var(--bright-blue);
+    // border-left: 5px solid #42a948; /* green */
+  }
+  input.ng-invalid,
+  select.ng-invalid {
+    border-left: 5px solid var(--orange-red); /* red */
+  }
+
+  .form-control-feedback {
+    margin-top: 5px;
+    color: var(--orange-red);
+  }
+
+  input,
+  select,
+  textarea {
+    min-height: 40px;
+    padding: 0 15px;
+    font-size: 15px;
+    font-family: "Quicksand";
+    font-weight: 500;
+    border-radius: 5px;
+    border: 1px solid gray;
+    appearance: none;
+
+    &::placeholder {
+      color: gray;
+    }
+  }
+  input:focus {
+    border: 2px solid rgb(88, 14, 157);
+  }
+
+  fieldset {
+    min-height: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    grid-template-rows: 95px;
+    column-gap: 1.5rem;
+    padding: 1rem 1rem 0;
+
+    div {
+      height: 90px;
+
+      p {
+        display: inline-block;
+      }
+    }
+
+    div,
+    input,
+    select {
+      width: 100%;
+      justify-self: stretch;
+      align-self: start;
+      background-color: white;
+    }
+
+    label.form-label {
+      display: block;
+    }
+  }
+  .btn-group {
+    display: inline-flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    .btn {
+      width: 230px;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      font-weight: 500;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      background-color: transparent;
+    }
+
+    .btn-submit {
+      color: white;
+      font-weight: 600;
+      background: var(--red-to-pink-to-purple-horizontal-gradient);
+
+      &:disabled {
+        background: var(--red-to-pink-to-purple-horizontal-gradient);
+        color: white;
+        font-weight: 600;
+        opacity: 0.4;
+        transition: all 0.3s ease;
+      }
+    }
+
+    .btn-reset {
+      color: var(--gray-700);
+      background-color: white;
+      border: 1px solid var(--gray-400);
+
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: var(--gray-400);
+        color: white;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
     }
   }
 }

@@ -1,18 +1,4 @@
 <app-page-template [titleHeader]="titleHeader">
-  <div header-content class="pill-group">
-    <div class="pill">
-      <a class="" [routerLink]="['/form/template-driven-form']" [routerLinkActive]="'selected'"
-        [routerLinkActiveOptions]="{ exact: true }" ariaCurrentWhenActive="page">
-        Template-driven Form
-      </a>
-    </div>
-    <div class="pill">
-      <a class="" [routerLink]="['/form/reactive-form']" [routerLinkActive]="'selected'"
-        [routerLinkActiveOptions]="{ exact: true }" ariaCurrentWhenActive="page">
-        Reactive Form
-      </a>
-    </div>
-  </div>
 
   <section main>
     <div class="left-side">
@@ -32,8 +18,8 @@
     <div class="right-side">
       <div [ngSwitch]="tab">
         <div *ngSwitchCase="'menu'">Pages menu</div>
-        <div *ngSwitchCase="'tdforms'">Content TD forms</div>
-        <div *ngSwitchCase="'reactiveforms'">Content Reactive forms</div>
+        <div *ngSwitchCase="'tdforms'"><app-template-driven-form /></div>
+        <div *ngSwitchCase="'reactiveforms'"><app-reactive-form /></div>
         <div *ngSwitchDefault>Select the tab to display its content</div>
       </div>
     </div>

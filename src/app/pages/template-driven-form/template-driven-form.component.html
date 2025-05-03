@@ -1,12 +1,217 @@
-<app-page-template [titleHeader]="'Template-Driven Forms'">
-  <div header-content class="pill-group">
-    <div class="pill">
-      <a class="" [routerLink]="['/home']" [routerLinkActive]="'selected'" [routerLinkActiveOptions]="{ exact: true }"
-        ariaCurrentWhenActive="page">
-        Home
-      </a>
-    </div>
-  </div>
+<h3>Building Template-Driven Form</h3>
+<section class="intro">
+  <p>Template-driven forms use <a href="https://angular.dev/guide/templates/two-way-binding">two-way data binding</a> to
+    update the data model in the component as changes are made in the template and vice versa.
+  </p>
+  <h4>
+    Syntax
+  </h4>
+  <p>The syntax for two-way binding is a combination of square brackets and parentheses, <code>[()]</code>. It combines
+    the syntax from
+    property binding, <code>[]</code>, and the syntax from event binding, <code>()</code>. The Angular community
+    informally refers to this syntax as
+    "banana-in-a-box".</p>
+  <p><code>[(ngModel)]</code> is used to bind the input field to a property in the component class.</p>
 
-  <section main></section>
-</app-page-template>
+  <h4>Two-way binding with form controls</h4>
+  <p>
+    Use two-way binding to keep component data in sync with a form control as a user interacts with the control. For
+    example, when a user fills out a text input, it should update the state in the component.
+  </p>
+</section>
+
+<div>
+  <form id="form"
+    action=""
+    novalidate
+    (ngSubmit)="onSubmit(userForm)"
+    #userForm="ngForm">
+    <fieldset ngModelGroup="userForm">
+      <div>
+        <label class="form-label"
+          for="firstName">First Name</label>
+        <input class="form-control"
+          type=" text"
+          id="firstName"
+          name="firstName"
+          #firstName="ngModel"
+          [(ngModel)]="user.firstName"
+          [class.is-valid]="firstName.valid && (firstName.dirty || firstName.touched)"
+          [class.is-invalid]="firstName.invalid && (firstName.dirty || firstName.touched)"
+          required
+          ng-untouched
+          ng-pristine
+          ng-valid
+          minlength="2"
+          maxlength="20" />
+        <!-- message -->
+        @if(firstName.errors && (firstName.dirty || firstName.touched)) {
+        <p class="form-control-feedback"
+          *ngIf="firstName.errors['required']">First name is required.</p>
+        <p class="form-control-feedback"
+          *ngIf="firstName.errors['minlength']">It must be at least 2 letters.</p>
+        }
+      </div>
+
+      <div>
+        <label class="form-label"
+          for="lastName">Last Name</label>
+        <input class="form-control"
+          type="text"
+          id="lastName"
+          name="lastName"
+          #lastName="ngModel"
+          [class.is-valid]="lastName.valid && (lastName.dirty || lastName.touched)"
+          [class.is-invalid]="lastName.invalid && (lastName.dirty || lastName.touched)"
+          [(ngModel)]="user.lastName"
+          required
+          ng-untouched
+          ng-pristine
+          ng-valid
+          minlength="2"
+          maxlength="20">
+        <!-- message -->
+        @if(lastName.errors && (lastName.dirty || lastName.touched)) {
+        <p class="form-control-feedback"
+          *ngIf="lastName.errors['required']">First name is required.</p>
+        <p class="form-control-feedback"
+          *ngIf="lastName.errors['minlength']">It must be at least 2 letters.</p>
+        }
+      </div>
+
+      <div>
+        <label class="form-label"
+          for="email">Email</label>
+        <input class="form-control"
+          type="email"
+          id="email"
+          name="email"
+          #email="ngModel"
+          [class.is-valid]="email.valid && (email.dirty || email.touched)"
+          [class.is-invalid]="email.invalid && (email.dirty || email.touched)"
+          [(ngModel)]="user.email"
+          pattern="[^ @]*@[^ @]*"
+          required
+          ng-untouched
+          ng-pristine
+          ng-valid
+          email>
+        <!-- message -->
+        @if(email.errors && (email.dirty || email.touched)) {
+        <p class="form-control-feedback"
+          *ngIf="email.errors['required']">Email is required.</p>
+        <p class="form-control-feedback"
+          *ngIf="email.errors['email']">Email is not valid.</p>
+        <p class="form-control-feedback"
+          *ngIf="email.errors['pattern']">
+          Email must contain at least the &#64; character.
+        </p>
+        }
+      </div>
+
+      <div>
+        <label class="form-label"
+          for="password">Password</label>
+        <input class="form-control"
+          type="password"
+          id="password"
+          name="password"
+          #password="ngModel"
+          [class.is-valid]="password.valid && (password.dirty || password.touched)"
+          [class.is-invalid]="password.invalid && (password.dirty || password.touched)"
+          [(ngModel)]="user.password"
+          required
+          minlength="8"
+          ng-untouched
+          ng-pristine
+          ng-valid
+          pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}">
+        <!-- message -->
+        @if(password.errors && (password.dirty || password.touched)) {
+        <p class="form-control-feedback"
+          *ngIf="password.errors['required']">Password is required.</p>
+        <!-- <p class="form-control-feedback" *ngIf="password.errors['pattern']">Password pattern must have 8 characters:
+          A-Z, a-z, 0-9, &#64;$!%*?&</p> -->
+        }
+        @if(password.errors?.['pattern'] && (password.dirty || password.touched)) {
+        <p class="form-control-feedback">Password pattern must have 8 characters:
+          A-Z, a-z, 0-9, &#64;$!%*?&</p>
+        }
+      </div>
+      <div>
+        <label class="form-label"
+          for="confirmPassword">
+          Confirm Password
+        </label>
+        @if(user.password !== user.confirmPassword) {
+        <input class="form-control"
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          #confirmPassword="ngModel"
+          [class.is-valid]="confirmPassword.valid && (confirmPassword.dirty || confirmPassword.touched)"
+          [class.is-invalid]="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)"
+          [(ngModel)]="user.confirmPassword"
+          required
+          minlength="8"
+          ng-untouched
+          ng-pristine
+          ng-valid
+          pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}">
+        <p class="form-control-feedback">Confirm Password, it must be the same</p>
+        } @else {
+        <input class="form-control"
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          #confirmPassword="ngModel"
+          [(ngModel)]="user.confirmPassword"
+          required
+          minlength="8"
+          ng-untouched
+          ng-pristine
+          ng-valid
+          pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}">
+        }
+      </div>
+
+      <div>
+        <label class="form-label"
+          for="category">Category</label>
+        <select class="form-control"
+          name="category"
+          #category="ngModel"
+          [(ngModel)]="user.category"
+          required
+          [class.is-valid]="category.valid && (category.dirty || category.touched)"
+          [class.is-invalid]="category.invalid && (category.dirty || category.touched)"
+          ng-untouched
+          ng-pristine
+          ng-valid>
+          <option value="">Please select a category</option>
+          <option *ngFor="let category of categoryList"
+            [value]="category">{{ category }}</option>
+        </select>
+        <!-- message -->
+        @if(category.errors && (category.dirty || category.touched)) {
+        <p class="form-control-feedback"
+          *ngIf="category.errors['required']">The category is required.</p>
+        }
+      </div>
+    </fieldset>
+  </form>
+  <div class="btn-group">
+    <button class="btn btn-submit"
+      type="submit"
+      form="form"
+      [disabled]="userForm.invalid">Submit</button>
+    <button class="btn btn-reset"
+      type="reset"
+      form="form">Reset</button>
+  </div>
+</div>
+
+<p *ngIf="submitted">
+  <strong>Form Submitted!</strong>
+</p>
+<p>{{ userForm.value | json }}</p>

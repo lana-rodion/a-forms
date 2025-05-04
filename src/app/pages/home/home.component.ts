@@ -16,5 +16,5 @@ import { ReactiveFormComponent } from '../reactive-form/reactive-form.component'
 })
 export class HomeComponent {
   titleHeader: string = 'Angular Forms';
-  tab: string = 'tdforms';
+  tab: string = 'reactiveforms';
 }

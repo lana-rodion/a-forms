@@ -3,13 +3,16 @@
   <section main>
     <div class="left-side">
       <ul>
-        <li [ngClass]="{active: tab=='menu'}" (click)="tab='menu'">
+        <li [ngClass]="{active: tab=='menu'}"
+          (click)="tab='modal'">
           <div class="icon icon-arrow-right"></div>Menu
         </li>
-        <li [ngClass]="{active: tab=='tdforms'}" (click)="tab='tdforms'">
+        <li [ngClass]="{active: tab=='tdforms'}"
+          (click)="tab='tdforms'">
           <div class="icon icon-arrow-right"></div>Template-driven form
         </li>
-        <li [ngClass]="{active: tab=='reactiveforms'}" (click)="tab='reactiveforms'">
+        <li [ngClass]="{active: tab=='reactiveforms'}"
+          (click)="tab='reactiveforms'">
           <div class="icon icon-arrow-right"></div>Reactive form
         </li>
       </ul>
@@ -17,7 +20,7 @@
     </div>
     <div class="right-side">
       <div [ngSwitch]="tab">
-        <div *ngSwitchCase="'menu'">Pages menu</div>
+        <div *ngSwitchCase="'menu'">Menu</div>
         <div *ngSwitchCase="'tdforms'"><app-template-driven-form /></div>
         <div *ngSwitchCase="'reactiveforms'"><app-reactive-form /></div>
         <div *ngSwitchDefault>Select the tab to display its content</div>

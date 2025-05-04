@@ -1,1 +1,14 @@
 <h3>Building Reactive Form</h3>
+
+<app-modal #modal [title]="titleModal">
+  <!-- <div modal-header></div> -->
+  <div modal-body>
+    <p>{{ contentModal }}</p>
+    <p><input type="checkbox">check me!</p>
+  </div>
+  <div modal-footer>
+    <p>{{ footerModal }}</p>
+  </div>
+</app-modal>
+
+<button class="btn btn-secondary-outlined" (click)="modal.open()">Open Modal</button>

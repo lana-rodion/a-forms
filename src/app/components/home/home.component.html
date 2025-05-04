@@ -4,16 +4,24 @@
     <div class="left-side">
       <ul>
         <li [ngClass]="{active: tab=='menu'}"
-          (click)="tab='modal'">
-          <div class="icon icon-arrow-right"></div>Menu
+          (click)="tab='menu'">
+          <div class="icon icon-arrow-right"></div>
+          <span>Menu</span>
         </li>
         <li [ngClass]="{active: tab=='tdforms'}"
           (click)="tab='tdforms'">
-          <div class="icon icon-arrow-right"></div>Template-driven form
+          <div class="icon icon-arrow-right"></div>
+          <span>Template-driven form</span>
+        </li>
+        <li [ngClass]="{active: tab=='tdformValidation'}"
+          (click)="tab='tdformValidation'">
+          <div class="icon icon-arrow-right"></div>
+          <span>Template-driven form Validation</span>
         </li>
         <li [ngClass]="{active: tab=='reactiveforms'}"
           (click)="tab='reactiveforms'">
-          <div class="icon icon-arrow-right"></div>Reactive form
+          <div class="icon icon-arrow-right"></div>
+          <span>Reactive form</span>
         </li>
       </ul>
 
@@ -22,6 +30,7 @@
       <div [ngSwitch]="tab">
         <div *ngSwitchCase="'menu'">Menu</div>
         <div *ngSwitchCase="'tdforms'"><app-template-driven-form /></div>
+        <div *ngSwitchCase="'tdformValidation'">Template-driven form Validation</div>
         <div *ngSwitchCase="'reactiveforms'"><app-reactive-form /></div>
         <div *ngSwitchDefault>Select the tab to display its content</div>
       </div>

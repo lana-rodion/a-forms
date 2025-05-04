@@ -5,7 +5,9 @@
 @use "./assets/scss/elements/containers";
 @use "./assets/scss/elements/tables";
 @use "./assets/scss/elements/icons";
+@use "./assets/scss/elements/buttons";
 @use "./assets/scss/forms/inputs";
+
 @mixin icon-size($width: null, $height: null) {
   width: $width;
   height: $height;

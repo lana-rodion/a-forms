@@ -2,6 +2,17 @@
 
 /** INPUTS & FORMS
 ========================= */
+// Form groups
+//
+// Designed to help with the organization and spacing of vertical forms. For
+// horizontal forms, use the predefined grid classes.
+
+.form-group {
+  height: calc(40px + 2.5rem);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.75rem;
+}
 
 .form-control {
   width: auto;
@@ -35,6 +46,11 @@
   }
 }
 
+.form-control-feedback {
+  margin-top: 5px;
+  color: var(--orange-red);
+}
+
 textarea.form-control {
   padding: 15px;
 }
@@ -61,13 +77,14 @@ textarea.active:focus,
 textarea.focus,
 textarea:active.focus,
 textarea.active.focus {
-  border-color: #ccc !important;
+  border: 1px solid rgb(88, 14, 157);
   outline: none !important;
-  box-shadow: none !important;
+  box-shadow: 0 2px 0.5rem 0 rgba(204, 204, 204, 0.7);
 }
 
 label.form-label {
-  color: #888;
+  display: block;
+  color: var(--gray-700);
   font-weight: 500;
   font-size: 12px;
   letter-spacing: normal;
@@ -79,4 +96,31 @@ label.form-label {
 input[type="number"] {
   appearance: none !important;
   -moz-appearance: textfield;
+}
+
+.ng-valid[required],
+.ng-valid.required {
+  border-left: 5px solid var(--bright-blue);
+}
+
+input.ng-invalid,
+select.ng-invalid {
+  border-left: 5px solid var(--orange-red);
+}
+
+input,
+select,
+textarea {
+  min-height: 40px;
+  padding: 0 15px;
+  font-size: 15px;
+  font-family: "Quicksand";
+  font-weight: 500;
+  border-radius: 5px;
+  border: 1px solid gray;
+  appearance: none;
+
+  &::placeholder {
+    color: gray;
+  }
 }

@@ -1,1 +1,208 @@
-<p>tdform-validation works!</p>
+<h3>How to Validate Angular Template-Driven Forms</h3>
+<p class="mb-1 text-bold">Source of inspiration:</p>
+<a href="https://www.freecodecamp.org/news/how-to-validate-angular-template-driven-forms/">
+  freeCodeCamp | December 22, 2019 | #Angular | By Ankit Sharma
+</a>
+<a href="https://github.com/AnkitSharma-007/angular-forms-validation">GitHub Code Source</a>
+
+<section class="intro mt-1">
+  <div>
+    <ul>
+      <h4>Goals:</h4>
+      <li>Checking for user name availability</li>
+      <li>Password pattern validation</li>
+      <li>Matching the password entered in two different fields</li>
+    </ul>
+  </div>
+  <div>
+    <ul>
+      <h4>Steps:</h4>
+      <li>Install Bootstrap <code>npm install bootstrap --save</code></li>
+      <li>Create the validation service</li>
+      <li>Create the User model</li>
+      <li>Create custom directives</li>
+      <li>Implement TdformValidationComponent</li>
+    </ul>
+  </div>
+</section>
+<button
+  class="btn btn-secondary-outlined"
+  (click)="modal.open()"
+>Open Modal</button>
+
+<app-modal
+  #modal
+  [title]="titleModal"
+>
+  <!-- <div modal-header></div> -->
+  <div
+    modal-body
+    class="body"
+  >
+    <form
+      class="form"
+      id="registerForm"
+      novalidate
+      [appMatchPassword]="['password', 'confirmPassword']"
+      (ngSubmit)="registerForm.form.valid && onSubmit()"
+      #registerForm="ngForm"
+    >
+      <div class="form-group">
+        <label
+          class="form-label"
+          for="name"
+        >Name</label>
+        <input
+          class="form-control"
+          type="text"
+          id="name"
+          name="name"
+          #name="ngModel"
+          [class.is-valid]="name.valid && (name.dirty || name.touched)"
+          [class.is-invalid]="name.invalid && (name.dirty || name.touched)"
+          [(ngModel)]="userModal.name"
+          required
+          minlength="2"
+          maxlength="20"
+          pattern="^[a-zA-Z ]+$"
+        >
+        <!-- message -->
+        @if(name.errors && (name.dirty || (name.touched || registerForm.submitted))) {
+        <p class="form-control-feedback">Name is required. It must be at least 2 letters.</p>
+        }
+      </div>
+
+      <div class="form-group">
+        <label
+          class="form-label"
+          for="email"
+        >Email</label>
+        <input
+          class="form-control"
+          type="text"
+          id="email"
+          name="email"
+          #email="ngModel"
+          [(ngModel)]="userModal.email"
+          required
+          email
+        >
+        <!-- message -->
+        <p
+          class="form-control-feedback"
+          *ngIf="(email.touched || registerForm.submitted) && email.errors?.['required']"
+        >
+          Email is required
+        </p>
+        <p
+          class="form-control-feedback"
+          *ngIf="email.touched && email.errors?.['email']"
+        >
+          Enter a valid email address
+        </p>
+      </div>
+
+      <div class="form-group">
+        <label
+          class="form-label"
+          for="username"
+        >User Name</label>
+        <input
+          class="form-control"
+          type="text"
+          id="username"
+          name="username"
+          #username="ngModel"
+          [(ngModel)]="userModal.username"
+          [class.is-valid]="username.valid && (username.dirty || username.touched)"
+          [class.is-invalid]="username.invalid && (username.dirty || username.touched)"
+          appValidateUserName
+          required
+        >
+        <p
+          class="form-control-feedback"
+          *ngIf="(username.touched || registerForm.submitted) && username.errors?.['required']"
+        >
+          User Name is required
+        </p>
+        <p
+          class="form-control-feedback"
+          *ngIf="username.touched && username.errors?.['userNameNotAvailable']"
+        >
+          User Name not available
+        </p>
+      </div>
+
+      <div class="form-group">
+        <label
+          class="form-label"
+          for="password"
+        >Password</label>
+        <input
+          class="form-control"
+          type="password"
+          id="password"
+          name="password"
+          #password="ngModel"
+          [(ngModel)]="userModal.password"
+          appPasswordPattern
+          required
+        >
+        <p
+          class="form-control-feedback"
+          *ngIf="(password.touched || registerForm.submitted) && password.errors?.['required']"
+        >
+          Password is required
+        </p>
+        <p
+          class="form-control-feedback"
+          *ngIf="password.touched && password.errors?.['invalidPassword']"
+        >
+          At least 8 characters, 1 uppercase letter, 1 lowercase
+          letter, 1 number
+        </p>
+      </div>
+
+      <div class="form-group">
+        <label
+          class="form-label"
+          for="confirmPassword"
+        >Confirm Password</label>
+        <input
+          class="form-control"
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          #confirmPassword="ngModel"
+          [(ngModel)]="userModal.confirmPassword"
+          required
+        >
+        <p
+          class="form-control-feedback"
+          *ngIf="(confirmPassword.touched || registerForm.submitted) && confirmPassword.errors?.['required']"
+        >
+          Confirm Password is required
+        </p>
+        <p
+          class="form-control-feedback"
+          *ngIf="confirmPassword.touched && confirmPassword.errors?.['passwordMismatch']"
+        >
+          Passwords does not match
+        </p>
+      </div>
+    </form>
+  </div>
+  <div modal-footer>
+    <button
+      class="btn btn-reset mr-1"
+      type="reset"
+      form="registerForm"
+    >Reset</button>
+    <button
+      class="btn btn-submit"
+      type="submit"
+      form="registerForm"
+      [disabled]="registerForm.invalid"
+    >Register</button>
+  </div>
+</app-modal>

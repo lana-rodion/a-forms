@@ -1,0 +1,38 @@
+@charset "utf-8";
+@use "../../../styles.scss";
+
+:host {
+  width: 100vw;
+  height: 100vh;
+
+  .intro {
+    width: fit-content;
+    height: fit-content;
+    margin-bottom: 1rem;
+    overflow: auto;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    column-gap: 1rem;
+  }
+
+  .ng-valid[required],
+  .ng-valid.required {
+    border-left: 5px solid var(--bright-blue);
+  }
+
+  input.ng-invalid,
+  select.ng-invalid {
+    border-left: 5px solid var(--orange-red);
+  }
+
+  .modal-content {
+    width: 20rem;
+    height: auto;
+    background-color: white;
+  }
+
+  .btn-submit,
+  .btn-reset {
+    width: 145px;
+  }
+}

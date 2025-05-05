@@ -21,16 +21,21 @@
 </section>
 
 <div>
-  <form id="form"
+  <form
+    id="form"
     action=""
     novalidate
     (ngSubmit)="onSubmit(userForm)"
-    #userForm="ngForm">
+    #userForm="ngForm"
+  >
     <fieldset ngModelGroup="userForm">
       <div>
-        <label class="form-label"
-          for="firstName">First Name</label>
-        <input class="form-control"
+        <label
+          class="form-label"
+          for="firstName"
+        >First Name</label>
+        <input
+          class="form-control"
           type=" text"
           id="firstName"
           name="firstName"
@@ -43,20 +48,28 @@
           ng-pristine
           ng-valid
           minlength="2"
-          maxlength="20" />
+          maxlength="20"
+        />
         <!-- message -->
         @if(firstName.errors && (firstName.dirty || firstName.touched)) {
-        <p class="form-control-feedback"
-          *ngIf="firstName.errors['required']">First name is required.</p>
-        <p class="form-control-feedback"
-          *ngIf="firstName.errors['minlength']">It must be at least 2 letters.</p>
+        <p
+          class="form-control-feedback"
+          *ngIf="firstName.errors['required']"
+        >First name is required.</p>
+        <p
+          class="form-control-feedback"
+          *ngIf="firstName.errors['minlength']"
+        >It must be at least 2 letters.</p>
         }
       </div>
 
       <div>
-        <label class="form-label"
-          for="lastName">Last Name</label>
-        <input class="form-control"
+        <label
+          class="form-label"
+          for="lastName"
+        >Last Name</label>
+        <input
+          class="form-control"
           type="text"
           id="lastName"
           name="lastName"
@@ -69,20 +82,28 @@
           ng-pristine
           ng-valid
           minlength="2"
-          maxlength="20">
+          maxlength="20"
+        >
         <!-- message -->
         @if(lastName.errors && (lastName.dirty || lastName.touched)) {
-        <p class="form-control-feedback"
-          *ngIf="lastName.errors['required']">First name is required.</p>
-        <p class="form-control-feedback"
-          *ngIf="lastName.errors['minlength']">It must be at least 2 letters.</p>
+        <p
+          class="form-control-feedback"
+          *ngIf="lastName.errors['required']"
+        >First name is required.</p>
+        <p
+          class="form-control-feedback"
+          *ngIf="lastName.errors['minlength']"
+        >It must be at least 2 letters.</p>
         }
       </div>
 
       <div>
-        <label class="form-label"
-          for="email">Email</label>
-        <input class="form-control"
+        <label
+          class="form-label"
+          for="email"
+        >Email</label>
+        <input
+          class="form-control"
           type="email"
           id="email"
           name="email"
@@ -95,24 +116,34 @@
           ng-untouched
           ng-pristine
           ng-valid
-          email>
+          email
+        >
         <!-- message -->
         @if(email.errors && (email.dirty || email.touched)) {
-        <p class="form-control-feedback"
-          *ngIf="email.errors['required']">Email is required.</p>
-        <p class="form-control-feedback"
-          *ngIf="email.errors['email']">Email is not valid.</p>
-        <p class="form-control-feedback"
-          *ngIf="email.errors['pattern']">
+        <p
+          class="form-control-feedback"
+          *ngIf="email.errors['required']"
+        >Email is required.</p>
+        <p
+          class="form-control-feedback"
+          *ngIf="email.errors['email']"
+        >Email is not valid.</p>
+        <p
+          class="form-control-feedback"
+          *ngIf="email.errors['pattern']"
+        >
           Email must contain at least the &#64; character.
         </p>
         }
       </div>
 
       <div>
-        <label class="form-label"
-          for="password">Password</label>
-        <input class="form-control"
+        <label
+          class="form-label"
+          for="password"
+        >Password</label>
+        <input
+          class="form-control"
           type="password"
           id="password"
           name="password"
@@ -125,11 +156,14 @@
           ng-untouched
           ng-pristine
           ng-valid
-          pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}">
+          pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"
+        >
         <!-- message -->
         @if(password.errors && (password.dirty || password.touched)) {
-        <p class="form-control-feedback"
-          *ngIf="password.errors['required']">Password is required.</p>
+        <p
+          class="form-control-feedback"
+          *ngIf="password.errors['required']"
+        >Password is required.</p>
         <!-- <p class="form-control-feedback" *ngIf="password.errors['pattern']">Password pattern must have 8 characters:
           A-Z, a-z, 0-9, &#64;$!%*?&</p> -->
         }
@@ -139,12 +173,15 @@
         }
       </div>
       <div>
-        <label class="form-label"
-          for="confirmPassword">
+        <label
+          class="form-label"
+          for="confirmPassword"
+        >
           Confirm Password
         </label>
         @if(user.password !== user.confirmPassword) {
-        <input class="form-control"
+        <input
+          class="form-control"
           type="password"
           id="confirmPassword"
           name="confirmPassword"
@@ -157,10 +194,12 @@
           ng-untouched
           ng-pristine
           ng-valid
-          pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}">
+          pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"
+        >
         <p class="form-control-feedback">Confirm Password, it must be the same</p>
         } @else {
-        <input class="form-control"
+        <input
+          class="form-control"
           type="password"
           id="confirmPassword"
           name="confirmPassword"
@@ -171,14 +210,18 @@
           ng-untouched
           ng-pristine
           ng-valid
-          pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}">
+          pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"
+        >
         }
       </div>
 
       <div>
-        <label class="form-label"
-          for="category">Category</label>
-        <select class="form-control"
+        <label
+          class="form-label"
+          for="category"
+        >Category</label>
+        <select
+          class="form-control"
           name="category"
           #category="ngModel"
           [(ngModel)]="user.category"
@@ -187,27 +230,36 @@
           [class.is-invalid]="category.invalid && (category.dirty || category.touched)"
           ng-untouched
           ng-pristine
-          ng-valid>
+          ng-valid
+        >
           <option value="">Please select a category</option>
-          <option *ngFor="let category of categoryList"
-            [value]="category">{{ category }}</option>
+          <option
+            *ngFor="let category of categoryList"
+            [value]="category"
+          >{{ category }}</option>
         </select>
         <!-- message -->
         @if(category.errors && (category.dirty || category.touched)) {
-        <p class="form-control-feedback"
-          *ngIf="category.errors['required']">The category is required.</p>
+        <p
+          class="form-control-feedback"
+          *ngIf="category.errors['required']"
+        >The category is required.</p>
         }
       </div>
     </fieldset>
   </form>
   <div class="btn-group">
-    <button class="btn btn-submit"
+    <button
+      class="btn btn-submit"
       type="submit"
       form="form"
-      [disabled]="userForm.invalid">Submit</button>
-    <button class="btn btn-reset"
+      [disabled]="userForm.invalid"
+    >Submit</button>
+    <button
+      class="btn btn-reset"
       type="reset"
-      form="form">Reset</button>
+      form="form"
+    >Reset</button>
   </div>
 </div>
 

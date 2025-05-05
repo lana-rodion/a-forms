@@ -19,41 +19,6 @@
     }
   }
 
-  .ng-valid[required],
-  .ng-valid.required {
-    border-left: 5px solid var(--bright-blue);
-    // border-left: 5px solid #42a948; /* green */
-  }
-  input.ng-invalid,
-  select.ng-invalid {
-    border-left: 5px solid var(--orange-red); /* red */
-  }
-
-  .form-control-feedback {
-    margin-top: 5px;
-    color: var(--orange-red);
-  }
-
-  input,
-  select,
-  textarea {
-    min-height: 40px;
-    padding: 0 15px;
-    font-size: 15px;
-    font-family: "Quicksand";
-    font-weight: 500;
-    border-radius: 5px;
-    border: 1px solid gray;
-    appearance: none;
-
-    &::placeholder {
-      color: gray;
-    }
-  }
-  input:focus {
-    border: 2px solid rgb(88, 14, 157);
-  }
-
   fieldset {
     min-height: auto;
     display: grid;
@@ -77,10 +42,6 @@
       justify-self: stretch;
       align-self: start;
       background-color: white;
-    }
-
-    label.form-label {
-      display: block;
     }
   }
 }

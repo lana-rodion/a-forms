@@ -1,14 +1,175 @@
-<h3>Building Reactive Form</h3>
+<h3>Reactive Form Validation in Angular</h3>
+<p class="mb-1 text-bold">To read:</p>
+<a href="https://ankitsharmablogs.com/reactive-form-validation-in-angular/">
+  Ankit Sharma's Blog | December 12, 2019 | #Angular
+</a>
+<a href="https://github.com/AnkitSharma-007/angular-forms-validation/tree/master/src/app/reactive-form">GitHub
+  AnkitSharma-007</a>
+<section class="intro mt-1">
+  <ul>
+    <h4>Goals:</h4>
+    <li>Checking for user name availability</li>
+    <li>Password pattern validation</li>
+    <li>Matching the password entered in two different fields</li>
+  </ul>
+</section>
 
-<app-modal #modal [title]="titleModal">
-  <!-- <div modal-header></div> -->
+<app-modal
+  #modal
+  [title]="titleModal"
+>
   <div modal-body>
-    <p>{{ contentModal }}</p>
-    <p><input type="checkbox">check me!</p>
+    <form
+      class="form"
+      id="registerForm"
+      [formGroup]="registerForm"
+      [appMatchPassword]="['password', 'confirmPassword']"
+      (ngSubmit)="registerForm.valid && onSubmit()"
+      autocomplete="off"
+    >
+      <div class="form-group">
+        <label
+          class="form-label"
+          for="name"
+        >Name</label>
+        <input
+          class="form-control"
+          type="text"
+          id="name"
+          name="name"
+          formControlName="name"
+          required
+          minlength="2"
+          maxlength="10"
+          pattern="^[a-zA-Z ]+$"
+          placeholder="Only letters and spaces are allowed."
+        >
+        <!-- message -->
+        @if((registerFormControl['name'].touched || submitted) && registerFormControl['name'].errors?.['required']) {
+        <p class="form-control-feedback">Name is required.</p>
+        }
+        @if((registerFormControl['name'].touched || submitted) && registerFormControl['name'].errors?.['minlength']) {
+        <p class="form-control-feedback">Name is required. It must be at least 2 letters.</p>
+        }
+      </div>
+
+      <div class="form-group">
+        <label
+          class="form-label"
+          for="email"
+        >Email</label>
+        <input
+          class="form-control"
+          type="text"
+          id="email"
+          name="email"
+          formControlName="email"
+          required
+          email
+        >
+        <!-- message -->
+        @if((registerFormControl['email'].touched || submitted) && registerFormControl['email'].errors?.['required']) {
+        <p class="form-control-feedback">Email is required.</p>
+        }
+        @if(registerFormControl['email'].touched && registerFormControl['email'].errors?.['email']) {
+        <p class="form-control-feedback">Enter a valid email address.</p>
+        }
+      </div>
+
+      <div class="form-group">
+        <label
+          class="form-label"
+          for="username"
+        >User Name</label>
+        <input
+          class="form-control"
+          type="text"
+          id="username"
+          name="username"
+          formControlName="username"
+          placeholder="The User Name must be unique."
+          required
+        >
+        <!-- message -->
+        @if((registerFormControl['username'].touched || submitted) &&
+        registerFormControl['username'].errors?.['required']) {
+        <p class="form-control-feedback">User Name is required.</p>
+        }
+        @if((registerFormControl['username'].touched || submitted) &&
+        registerFormControl['username'].errors?.['userNameNotAvailable'])
+        {
+        <p class="form-control-feedback">User Name not available.</p>
+        }
+      </div>
+
+      <div class="form-group">
+        <label
+          class="form-label"
+          for="password"
+        >Password</label>
+        <input
+          class="form-control"
+          type="password"
+          id="password"
+          name="password"
+          formControlName="password"
+          appPasswordPattern
+          required
+        >
+        <!-- message -->
+        @if((registerFormControl['password'].touched || submitted) &&
+        registerFormControl['password'].errors?.['required']) {
+        <p class="form-control-feedback">Password is required.</p>
+        }
+        @if(registerFormControl['password'].touched && registerFormControl['password'].errors?.['invalidPassword'])
+        {
+        <p class="form-control-feedback">At least 8 characters, 1 uppercase letter, 1 lowercase
+          letter, 1 number.</p>
+        }
+      </div>
+
+      <div class="form-group">
+        <label
+          class="form-label"
+          for="confirmPassword"
+        >Confirm Password</label>
+        <input
+          class="form-control"
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          formControlName="confirmPassword"
+          required
+        >
+        <!-- message -->
+        @if((registerFormControl['confirmPassword'].touched || submitted) &&
+        registerFormControl['confirmPassword'].errors?.['required']) {
+        <p class="form-control-feedback">Confirm Password is required.</p>
+        }
+        @if(registerFormControl['confirmPassword'].touched &&
+        registerFormControl['confirmPassword'].errors?.['passwordMismatch'])
+        {
+        <p class="form-control-feedback">Passwords do not match.</p>
+        }
+      </div>
+    </form>
   </div>
   <div modal-footer>
-    <p>{{ footerModal }}</p>
+    <button
+      class="btn btn-reset mr-1"
+      type="reset"
+      form="registerForm"
+    >Reset</button>
+    <button
+      class="btn btn-submit"
+      type="submit"
+      form="registerForm"
+      [disabled]="registerForm.invalid"
+    >Register</button>
   </div>
 </app-modal>
 
-<button class="btn btn-secondary-outlined" (click)="modal.open()">Open Modal</button>
+<button
+  class="btn btn-secondary-outlined"
+  (click)="modal.open()"
+>Open Form Modal</button>

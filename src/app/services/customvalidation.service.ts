@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { AbstractControl, FormGroup, ValidatorFn } from '@angular/forms';
+import { AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CustomvalidationService {
   // AbstractControl is a base class for all form controls
-  // FormGroup is a class that represents a group of form controls
   // ValidatorFn is a function that takes an AbstractControl and returns a validation error object or null
   // The patternValidator function returns a ValidatorFn that checks if the control value matches the regex pattern
   // The regex pattern checks if the control value contains at least
@@ -26,12 +25,12 @@ export class CustomvalidationService {
 
   // The method matchPassword is used to compare the passwords in two fields.
   // These parameters represent the name of the fields to be matched.
-  // The method returns a ValidatorFn that takes a FormGroup and checks if the values of the two fields are equal.
   // If the values are not equal, it sets the passwordMismatch error on the confirmPassword control.
   matchPassword(password: string, confirmPassword: string) {
-    return (formGroup: FormGroup) => {
-      const passwordControl = formGroup.controls[password];
-      const confirmPasswordControl = formGroup.controls[confirmPassword];
+    return (formGroup: AbstractControl): ValidationErrors | null => {
+      const passwordControl = formGroup.get(password);
+      const confirmPasswordControl = formGroup.get(confirmPassword);
+      // If either control is not found, return null
 
       if (!passwordControl || !confirmPasswordControl) {
         return null;

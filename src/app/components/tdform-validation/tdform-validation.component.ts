@@ -23,8 +23,6 @@ export class TdformValidationComponent {
   titleModal = 'Custom Template-Driven Form Validation';
   @ViewChild('modal', { static: false }) modal!: ModalComponent;
 
-  constructor() {}
-
   onSubmit() {
     confirm(
       'Form Submitted succesfully!!!\n Check the values in browser console.'

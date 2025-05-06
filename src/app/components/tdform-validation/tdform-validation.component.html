@@ -92,13 +92,13 @@
           class="form-control-feedback"
           *ngIf="(email.touched || registerForm.submitted) && email.errors?.['required']"
         >
-          Email is required
+          Email is required.
         </p>
         <p
           class="form-control-feedback"
           *ngIf="email.touched && email.errors?.['email']"
         >
-          Enter a valid email address
+          Enter a valid email address.
         </p>
       </div>
 
@@ -123,13 +123,13 @@
           class="form-control-feedback"
           *ngIf="(username.touched || registerForm.submitted) && username.errors?.['required']"
         >
-          User Name is required
+          User Name is required.
         </p>
         <p
           class="form-control-feedback"
           *ngIf="username.touched && username.errors?.['userNameNotAvailable']"
         >
-          User Name not available
+          User Name not available.
         </p>
       </div>
 
@@ -152,14 +152,14 @@
           class="form-control-feedback"
           *ngIf="(password.touched || registerForm.submitted) && password.errors?.['required']"
         >
-          Password is required
+          Password is required.
         </p>
         <p
           class="form-control-feedback"
           *ngIf="password.touched && password.errors?.['invalidPassword']"
         >
           At least 8 characters, 1 uppercase letter, 1 lowercase
-          letter, 1 number
+          letter, 1 number.
         </p>
       </div>
 
@@ -181,13 +181,13 @@
           class="form-control-feedback"
           *ngIf="(confirmPassword.touched || registerForm.submitted) && confirmPassword.errors?.['required']"
         >
-          Confirm Password is required
+          Confirm Password is required.
         </p>
         <p
           class="form-control-feedback"
           *ngIf="confirmPassword.touched && confirmPassword.errors?.['passwordMismatch']"
         >
-          Passwords does not match
+          Passwords do not match.
         </p>
       </div>
     </form>

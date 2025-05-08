@@ -90,8 +90,4 @@ export class ReactiveFormComponent implements OnInit {
     }
     this.modal.close();
   }
-  onReset() {
-    this.submitted = false;
-    this.registerForm.reset();
-  }
 }

@@ -7,10 +7,3 @@ export interface UserRegistration {
   password: FormControl<string | null>;
   confirmPassword: FormControl<string | null>;
 }
-/* export class UserRegistration {
-  public name?: string;
-  public email?: string;
-  public username?: string;
-  public password?: string;
-  public confirmPassword?: string;
-} */

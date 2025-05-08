@@ -11,6 +11,7 @@ import { CustomvalidationService } from '../../services/customvalidation.service
 import { MatchPasswordDirective } from '../../directives/match-password.directive';
 import { PasswordPatternDirective } from '../../directives/password-pattern.directive';
 import { UsernameValidationService } from '../../services/username-validation.service';
+import { UserRegistration } from '../../models/userRegistration';
 
 @Component({
   selector: 'app-reactive-form',
@@ -25,14 +26,15 @@ import { UsernameValidationService } from '../../services/username-validation.se
   styleUrl: './reactive-form.component.scss',
 })
 export class ReactiveFormComponent implements OnInit {
-  registerForm: FormGroup = new FormGroup({
+  /* registerForm: FormGroup = new FormGroup({
     name: new FormControl(''),
     email: new FormControl(''),
     username: new FormControl(''),
     password: new FormControl(''),
     confirmPassword: new FormControl(''),
-  });
+  }); */
 
+  registerForm!: FormGroup<UserRegistration>;
   submitted = false;
   titleModal = 'Reactive Register Form Modal';
   @ViewChild('modal', { static: false }) modal!: ModalComponent;
@@ -43,7 +45,7 @@ export class ReactiveFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.registerForm = new FormGroup({
+    this.registerForm = new FormGroup<UserRegistration>({
       name: new FormControl('', [Validators.required, Validators.minLength(2)]),
       email: new FormControl('', [Validators.required, Validators.email]),
       username: new FormControl('', {

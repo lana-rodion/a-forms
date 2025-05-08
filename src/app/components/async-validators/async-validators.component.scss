@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+
+  .subtitle {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
+  }
+
+  li {
+    padding-left: 0.5rem;
+  }
+}
+
+.intro {
+  width: fit-content;
+  height: fit-content;
+  margin-bottom: 1rem;
+  overflow: auto;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  column-gap: 1rem;
+}

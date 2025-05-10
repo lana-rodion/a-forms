@@ -1,8 +1,8 @@
-<h3>Working with async validators in Angular</h3>
+<h3>Working with AsyncValidator in Angular</h3>
 <p>
   References and useful links
 </p>
-<section class="intro">
+<section>
   <!-- Reactive Forms | AbstractControl -->
   <ul>
     <p class="subtitle">Angular | Reactive Forms</p>
@@ -28,6 +28,12 @@
       Angular | FormGroup and FormBuilder
     </p>
     <li>
+      <p class="description">
+        FormBuilder is a service to create instances of FormGroup and FormControl.
+        It is a part of the Angular Forms module.
+        This API is not typesafe.
+        Use the <code>FormBuilder#group</code> overload with AbstractControlOptions instead.
+      </p>
       <a href="https://angular.dev/api/forms/FormBuilder">
         Angular Docs | FormBuilder
       </a>
@@ -64,9 +70,82 @@
     </li>
     <li>
       <a
+        href="https://javascript.plainenglish.io/essential-form-states-every-angular-developer-should-know-db9760092d51">
+        Essential Form States Every Angular Developer Should Know
+      </a>
+    </li>
+    <li>
+      <a
         href="https://medium.com/@vamsikurimeti92/understanding-angular-forms-validators-dirty-touched-pristine-value-and-more-fa322d462451">
         Understanding Validators, Dirty, Touched, Pristine, Value and more…
       </a>
     </li>
   </ul>
 </section>
+
+<p class="subtitle">Custom validation using AsyncValidator with Observable</p>
+<p>Adapted for Angular 19.2.10</p>
+<a
+  href="https://chumtoadafuq.github.io/angular/2017/08/06/Angular-custom-validation-using-AsyncValidator-with-Observable.html">
+  Based on the chumtoadafuq blog (Angular v4.3)
+</a><br>
+<a href="https://github.com/chumtoadafuq/AsyncValidator/tree/master">chumtoadafuq
+  AsyncValidator</a>
+
+<section class="mt-1">
+  <div>
+    <p class="subtitle">List of Approved fruit</p>
+    <ul>
+      <li>apple</li>
+      <li>orange</li>
+      <li>banana</li>
+      <li>pear</li>
+      <li>melon</li>
+    </ul>
+  </div>
+  <div>
+    <p class="subtitle">Input an approved fruit</p>
+    <form
+      [formGroup]="fruitForm"
+      novalidate
+    >
+      <input
+        class="form-control mr-2"
+        type="text"
+        id="fruit"
+        name="fruit"
+        formControlName="fruit"
+        required
+      >
+      @if((fruitForm.controls['fruit'].touched) || fruitForm.controls['fruit'].hasError('checkFruitIsApproved')) {
+      <p class="form-control-feedback">
+        {{fruitForm.controls['fruit'].errors?.['checkFruitIsApproved']}}
+      </p>
+      }
+      @if(fruitForm.controls['fruit'].valid === true) {
+      <p class="form-control-feedback-valid">
+        {{fruitForm.controls['fruit'].value}} is an approved fruit!
+      </p>
+      }
+    </form>
+  </div>
+  <div>
+    <p class="subtitle">fruitForm info</p>
+    <div>
+      <ul>
+        <li>fruitForm.value... {{fruitForm.value | json}}</li>
+        <li>fruitForm.status... {{fruitForm.status}}</li>
+        <li>fruitForm.errors... {{fruitForm.errors | json}}</li>
+      </ul>
+      <ul>
+        <li>fruitForm.get('fruit').value... {{fruitForm.controls['fruit'].value | json}}</li>
+        <li>fruitForm.get('fruit').status... {{fruitForm.controls['fruit'].status}}</li>
+        <li>fruitForm.get('fruit').errors... {{fruitForm.controls['fruit'].errors | json}}</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- Enabling the submit button only when the form is dirty (modified) and valid-->
+<!-- <button [disabled]="!formGroup.dirty || formGroup.invalid">Submit</button> -->

@@ -1,60 +1,113 @@
-<h3>Custom AsyncValidators in Angular</h3>
-<p>To read:
-  <a href="https://medium.com/@rinciarijoc/angular-custom-async-validators-13a648d688d8">
-    Angular: Custom Async Validators <br>
-    Jon Rinciari | May 12, 2019
-  </a>
-</p>
-<div>
+<header>
+  <h3>Custom AsyncValidators in Angular</h3>
+  <p>To read:
+    <a href="https://medium.com/@rinciarijoc/angular-custom-async-validators-13a648d688d8">
+      Angular: Custom Async Validators <br>
+      Jon Rinciari | May 12, 2019
+    </a>
+  </p>
+</header>
+<!-- Form: ZipCode -->
+<section>
+  <div>
+    <form
+      class="form-group w-auto mt-1"
+      id="address"
+      [formGroup]="address"
+      novalidate
+      (ngSubmit)="onSubmitForm(address)"
+      autocomplete="off"
+    >
+      <label
+        class="form-label"
+        for="zipcode"
+      >Zipcode</label>
+      <input
+        class="form-control"
+        type="text"
+        id="zipcode"
+        name="zipcode"
+        formControlName="zipcode"
+        placeholder="Zipcode, 5 numbers only"
+        pattern="^[0-9]*$"
+        maxlength="5"
+        required
+      />
+      <ng-container *ngIf="address.get('zipcode') as zipcodeControl">
+        <p
+          class="form-control-feedback"
+          *ngIf="(zipcodeControl.touched || submitted) && zipcodeControl.errors?.['required']"
+        >
+          Zipcode is <strong>required</strong>.
+        </p>
+        <p
+          class="form-control-feedback"
+          *ngIf="zipcodeControl.hasError('invalidAsync')"
+        >
+          Zipcode must be <strong>valid</strong>
+        </p>
+      </ng-container>
+    </form>
+  </div>
+  <div class="action-buttons">
+    <button
+      class="btn btn-reset"
+      type="reset"
+      form="address"
+    >Reset</button>
+    <button
+      class="btn btn-submit"
+      type="submit"
+      form="address"
+      [disabled]="address.invalid || address.pending"
+    >Submit</button>
+  </div>
+</section>
+
+<!-- Form: does UserName exist -->
+<section>
+  <h3> Using Custom Async Validator with Service</h3>
   <form
-    class="form-group w-auto mt-1"
-    id="address"
-    [formGroup]="address"
-    novalidate
-    (ngSubmit)="onSubmit()"
+    class="w-auto mt-1"
+    id="registrationForm"
+    [formGroup]="registrationForm"
+    (ngSubmit)="onSubmitForm(registrationForm)"
     autocomplete="off"
+    novalidate
   >
-    <label
-      class="form-label"
-      for="zipcode"
-    >Zipcode</label>
-    <input
-      class="form-control"
-      type="text"
-      id="zipcode"
-      name="zipcode"
-      formControlName="zipcode"
-      placeholder="Zipcode, only numbers"
-      pattern="^[0-9]*$"
-      minlength="5"
-      required
-    />
-    <ng-container *ngIf="address.get('zipcode') as zipcodeControl">
-      <p
-        class="form-control-feedback"
-        *ngIf="(zipcodeControl.touched || submitted) && zipcodeControl.errors?.['required']"
-      >
-        Zipcode is <strong>required</strong>.
+    <div class="form-group">
+      <label
+        class="form-label"
+        for="username"
+      >Username</label>
+      <input
+        class="form-control"
+        type="text"
+        id="username"
+        name="username"
+        formControlName="username"
+        required
+        pattern="^[a-zA-Z0-9]*$"
+        placeholder="Ex. Batman"
+      />
+      @if(registrationForm.get('username')?.hasError('usernameAlreadyExists')) {
+      <p class="form-control-feedback">
+        Username already <strong>exists</strong>
       </p>
-      <p
-        class="form-control-feedback"
-        *ngIf="zipcodeControl.hasError('invalidAsync')"
-      >
-        Zipcode must be <strong>valid</strong>
-      </p>
-    </ng-container>
+      }
+    </div>
   </form>
-</div>
-<div class="action-buttons">
-  <button
-    class="btn btn-reset"
-    type="reset"
-    form="address"
-  >Reset</button>
-  <button
-    class="btn btn-submit"
-    type="submit"
-    form="address"
-    [disabled]="address.invalid || address.pending"
-  >Submit</button>
-</div>
+  <div class="action-buttons">
+    <button
+      class="btn btn-reset"
+      type="reset"
+      form="registrationForm"
+    >Reset</button>
+    <button
+      class="btn btn-submit"
+      type="submit"
+      form="registrationForm"
+      [disabled]="!registrationForm.valid || registrationForm.pending"
+    >Submit</button>
+  </div>
+</section>

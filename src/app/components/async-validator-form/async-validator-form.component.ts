@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
+  FormBuilder,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
@@ -8,6 +9,8 @@ import {
 } from '@angular/forms';
 import { ZipcodeService } from '../../services/zipcode.service';
 import { ZipcodeValidator } from '../../validators/zipcode-validator';
+import { UserService } from '../../services/user.service';
+import { UsernameValidator } from '../../validators/username.validator';
 
 @Component({
   selector: 'app-async-validator-form',
@@ -21,10 +24,17 @@ export class AsyncValidatorFormComponent implements OnInit {
     // Add your synchronous validators here
     Validators.required,
     Validators.pattern('\\d{5}'), // 5 digit zip code
+    Validators.maxLength(5),
   ];
+
+  registrationForm!: FormGroup;
   submitted = false;
 
-  constructor(private zipcodeService: ZipcodeService) {}
+  constructor(
+    private zipcodeService: ZipcodeService,
+    private fb: FormBuilder,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
     // Initialization logic here
@@ -35,20 +45,25 @@ export class AsyncValidatorFormComponent implements OnInit {
         ZipcodeValidator.createValidator(this.zipcodeService)
       ),
     });
+
+    this.registrationForm = this.fb.group({
+      username: [
+        '',
+        [Validators.minLength(3), Validators.required],
+        [UsernameValidator.createValidator(this.userService)],
+      ],
+    });
   }
 
-  onSubmit() {
-    if (this.address.invalid) {
-      this.submitted = false;
+  onSubmitForm(form: FormGroup) {
+    if (form.invalid) {
       return;
     }
-    if (this.address.valid) {
-      alert(
-        'Form Submitted succesfully!!!\nCheck the values in browser console.'
-      );
-      console.log('User Register Form: ', this.address.value);
-      // Reset the form after submission
-      this.address.reset();
-    }
+    alert(
+      'Form Submitted succesfully!!!\nCheck the values in browser console.'
+    );
+    console.log('User Register Form: ', form.value);
+    this.submitted = true;
+    form.reset();
   }
 }

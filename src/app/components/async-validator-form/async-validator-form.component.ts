@@ -7,7 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ZipcodeService } from '../../services/zipcode.service';
-import { ZipcodeValidator } from './zipcode-validator';
+import { ZipcodeValidator } from '../../validators/zipcode-validator';
 
 @Component({
   selector: 'app-async-validator-form',

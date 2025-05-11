@@ -31,6 +31,13 @@
           <div class="icon icon-arrow-right"></div>
           <span>Async Validators</span>
         </li>
+        <li
+          [ngClass]="{active: tab=='asyncSyncValidators'}"
+          (click)="tab='asyncSyncValidators'"
+        >
+          <div class="icon icon-arrow-right"></div>
+          <span>AsyncValidator & SyncValidator</span>
+        </li>
       </ul>
 
     </div>
@@ -41,6 +48,7 @@
         <div *ngSwitchCase="'tdformValidation'"><app-tdform-validation /></div>
         <div *ngSwitchCase="'reactiveforms'"><app-reactive-form /></div>
         <div *ngSwitchCase="'asyncValidators'"><app-async-validators /></div>
+        <div *ngSwitchCase="'asyncSyncValidators'"><app-async-validator-form /></div>
         <div *ngSwitchDefault>Select the tab to display its content</div>
       </div>
     </div>

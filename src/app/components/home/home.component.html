@@ -38,6 +38,13 @@
           <div class="icon icon-arrow-right"></div>
           <span>AsyncValidator & SyncValidator</span>
         </li>
+        <li
+          [ngClass]="{active: tab=='customValidation'}"
+          (click)="tab='customValidation'"
+        >
+          <div class="icon icon-arrow-right"></div>
+          <span>Custom Validation</span>
+        </li>
       </ul>
 
     </div>
@@ -49,6 +56,7 @@
         <div *ngSwitchCase="'reactiveforms'"><app-reactive-form /></div>
         <div *ngSwitchCase="'asyncValidators'"><app-async-validators /></div>
         <div *ngSwitchCase="'asyncSyncValidators'"><app-async-validator-form /></div>
+        <div *ngSwitchCase="'customValidation'"><app-custom-validation /></div>
         <div *ngSwitchDefault>Select the tab to display its content</div>
       </div>
     </div>

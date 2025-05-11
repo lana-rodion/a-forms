@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+:host {
+  width: max-content;
+  display: flex;
+  flex-flow: column nowrap;
+
+  .action-buttons,
+  input {
+    width: 230px;
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+  }
+}

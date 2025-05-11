@@ -6,6 +6,7 @@ import { ReactiveFormComponent } from '../reactive-form/reactive-form.component'
 import { TdformValidationComponent } from '../tdform-validation/tdform-validation.component';
 import { AsyncValidatorsComponent } from '../async-validators/async-validators.component';
 import { AsyncValidatorFormComponent } from '../async-validator-form/async-validator-form.component';
+import { CustomValidationComponent } from '../custom-validation/custom-validation.component';
 @Component({
   selector: 'app-home',
   imports: [
@@ -16,11 +17,12 @@ import { AsyncValidatorFormComponent } from '../async-validator-form/async-valid
     TdformValidationComponent,
     AsyncValidatorsComponent,
     AsyncValidatorFormComponent,
+    CustomValidationComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
   titleHeader: string = 'Angular Forms';
-  tab: string = 'asyncSyncValidators';
+  tab: string = 'customValidation';
 }

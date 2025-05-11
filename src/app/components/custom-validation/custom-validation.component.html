@@ -1,0 +1,60 @@
+<h3>Custom Validator in Angular Reactive Form</h3>
+<p>To read:
+  <a href="https://www.tektutorialshub.com/angular/custom-validator-in-angular-reactive-form/">
+    "https://www.tektutorialshub.com/angular" | May 18, 2023
+  </a>
+</p>
+<!--
+ * novalidate attribute is used to disable browser's native form validation,
+ * i.e form data will not be validated upon submission. Examples include input where type='email'
+-->
+<div>
+  <form
+    class="form-group w-auto mt-1"
+    id="formNumber"
+    [formGroup]="formNumber"
+    (ngSubmit)="onSubmit()"
+    novalidate
+  >
+    <label
+      class="form-label"
+      for="numVal"
+    >Number :</label>
+    <input
+      class="form-control"
+      type="text"
+      id="numVal"
+      name="numVal"
+      formControlName="numVal"
+      placeholder="Only numbers"
+      pattern="^[0-9]*$"
+      required
+    >
+    <ng-container *ngIf="formNumber.get('numVal') as numValControl">
+      @if((numValControl.touched || submitted) && numValControl.hasError('notANumber')) {
+      <p class="form-control-feedback">
+        Invalid input. Only <strong>numbers</strong> are allowed.
+      </p>
+      }
+      @if((numValControl.touched || submitted) && numValControl.hasError('lessThanTen')) {
+      <p class="form-control-feedback">
+        The numbers <strong>must be bigger than 10</strong>.
+      </p>
+      }
+    </ng-container>
+  </form>
+</div>
+<div class="action-buttons">
+  <button
+    class="btn btn-reset"
+    type="reset"
+    form="formNumber"
+  >Reset</button>
+  <button
+    class="btn btn-submit"
+    type="submit"
+    form="formNumber"
+    [disabled]="formNumber.invalid || formNumber.pending"
+  >Submit</button>
+</div>
+<p class="mt-1">Is Form Valid : {{formNumber.valid}} </p>

@@ -1,0 +1,21 @@
+<h3>"app-child.component"</h3>
+<p>To use &#64;Input() in the child's template:</p>
+<pre>
+  <code>childData1: {{ childData1 }} </code>
+  <code>childData2: {{ childData2 }} </code>
+</pre>
+<p>To use &#64;Output() in the child's template:</p>
+<label
+  class="mb-1"
+  for="item-input"
+>Add an item:</label>
+<input
+  type="text"
+  id="item-input"
+  #newItem
+>
+<button
+  class="btn btn-submit mt-1"
+  type="button"
+  (click)="addNewItem(newItem.value)"
+>Add to parent's list</button>

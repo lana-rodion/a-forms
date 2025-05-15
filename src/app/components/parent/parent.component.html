@@ -1,0 +1,13 @@
+<h2>"app-parent.component"</h2>
+<p>Below there is <strong>app-child.component</strong>
+  <br>with "parentData1" and "parentData2" passed.
+</p>
+<app-child
+  [childData1]="parentData1Requiered"
+  [childData2]="parentData2"
+  (newItemEvent)="addItem($event)"
+></app-child>
+
+<ul>
+  <li *ngFor="let item of items">{{item}}</li>
+</ul>

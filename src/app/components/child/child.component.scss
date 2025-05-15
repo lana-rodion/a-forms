@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  padding: 1rem;
+  background-color: bisque;
+  border: 2px dashed red;
+}

@@ -46,11 +46,11 @@
           <span>Number Custom Validator</span>
         </li>
         <li
-          [ngClass]="{active: tab=='bindingData'}"
-          (click)="tab='bindingData'"
+          [ngClass]="{active: tab=='shareData'}"
+          (click)="tab='shareData'"
         >
           <div class="icon icon-arrow-right"></div>
-          <span>Sharing data: <br>Child and Parent</span>
+          <span>Share data</span>
         </li>
       </ul>
 
@@ -64,14 +64,8 @@
         <div *ngSwitchCase="'asyncValidators'"><app-async-validators /></div>
         <div *ngSwitchCase="'asyncSyncValidators'"><app-async-validator-form /></div>
         <div *ngSwitchCase="'customValidation'"><app-custom-validation /></div>
-        <div *ngSwitchCase="'bindingData'">
-          <div class="binding-data">
-            <app-parent class="binding-data-item"></app-parent>
-            <div>
-              <app-child class="binding-data-item"></app-child>
-              <div class="backdrop"> </div>
-            </div>
-          </div>
+        <div *ngSwitchCase="'shareData'">
+          <app-share-data />
         </div>
         <div *ngSwitchDefault>Select the tab to display its content</div>
       </div>

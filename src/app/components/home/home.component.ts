@@ -7,8 +7,8 @@ import { TdformValidationComponent } from '../tdform-validation/tdform-validatio
 import { AsyncValidatorsComponent } from '../async-validators/async-validators.component';
 import { AsyncValidatorFormComponent } from '../async-validator-form/async-validator-form.component';
 import { CustomValidationComponent } from '../custom-validation/custom-validation.component';
-import { ChildComponent } from '../child/child.component';
-import { ParentComponent } from '../parent/parent.component';
+import { ShareDataComponent } from '../share-data/share-data.component';
+
 @Component({
   selector: 'app-home',
   imports: [
@@ -20,14 +20,13 @@ import { ParentComponent } from '../parent/parent.component';
     AsyncValidatorsComponent,
     AsyncValidatorFormComponent,
     CustomValidationComponent,
-    ChildComponent,
-    ParentComponent,
+    ShareDataComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
   titleHeader: string = 'Angular Forms';
-  tab: string = 'bindingData';
+  tab: string = 'shareData';
   disabled: boolean = true;
 }

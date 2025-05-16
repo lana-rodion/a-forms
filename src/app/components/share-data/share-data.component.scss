@@ -1,2 +1,20 @@
 @charset "utf-8";
 @use "../../../styles.scss";
+
+.menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+
+  .menu-item {
+    height: 240px;
+    background-color: rgba(231, 207, 255, 0.25);
+    padding: 1rem;
+
+    p {
+      font-weight: 700;
+      color: #444;
+      margin-bottom: 1rem;
+    }
+  }
+}

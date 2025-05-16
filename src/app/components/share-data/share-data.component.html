@@ -5,18 +5,26 @@
   </a>
 </p>
 <div class="text-small text-italic mb-1 mt-1">Posted by: InstanceOfJava | Feb 3, 2025</div>
-<p>Parent to Child: Sharing Data with &#64;Input()</p>
-<p>Child to Parent: Using &#64;Output() to Emit Events</p>
-<a [routerLink]="['/sharedata/inputOutput']">&#64;Input() and &#64;Output()</a>
-
-<p>Sibling Communication Using a Shared Service with BehaviorSubject</p>
-<a [routerLink]="['/sharedata/behaviorSubject']">Shared Service with BehaviorSubject</a>
-
-<p>Direct Access Using &#64;ViewChild</p>
-<a [routerLink]="['/sharedata/viewChild']">Parent with &#64;ViewChild</a>
-
-<p>Browser Storage for Persistent Data Sharing</p>
-<a [routerLink]="['/sharedata/localStorage']">LocalStorage or sessionStorage</a>
-
-<p>Pass data between components using routes</p>
-<a [routerLink]="['/sharedata/routeParams']">Angular Route data sharing</a>
+<div class="menu">
+  <div class="menu-item">
+    <p>Parent to Child: Sharing Data with &#64;Input()</p>
+    <p>Child to Parent: Using &#64;Output() to Emit Events</p>
+    <a [routerLink]="['/sharedata/inputOutput']">&#64;Input() and &#64;Output()</a>
+  </div>
+  <div class="menu-item">
+    <p>Sibling Communication Using a Shared Service with BehaviorSubject</p>
+    <a [routerLink]="['/sharedata/behaviorSubject']">Shared Service with BehaviorSubject</a>
+  </div>
+  <div class="menu-item">
+    <p>Direct Access Using &#64;ViewChild</p>
+    <a [routerLink]="['/sharedata/viewChild']">Parent with &#64;ViewChild</a>
+  </div>
+  <div class="menu-item">
+    <p>Browser Storage for Persistent Data Sharing</p>
+    <a [routerLink]="['/sharedata/localStorage']">LocalStorage or sessionStorage</a>
+  </div>
+  <div class="menu-item">
+    <p>Pass data between components using routes</p>
+    <a [routerLink]="['/sharedata/routeParams']">Angular Route data sharing</a>
+  </div>
+</div>

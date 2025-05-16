@@ -26,7 +26,7 @@ import { ShareDataComponent } from '../share-data/share-data.component';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  titleHeader: string = 'Angular Forms';
+  titleHeader: string = 'Forms | Validators | Data Sharing';
   tab: string = 'shareData';
   disabled: boolean = true;
 }

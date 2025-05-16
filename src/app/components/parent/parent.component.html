@@ -1,13 +1,25 @@
-<h2>"app-parent.component"</h2>
-<p>Below there is <strong>app-child.component</strong>
-  <br>with "parentData1" and "parentData2" passed.
-</p>
-<app-child
-  [childData1]="parentData1Requiered"
-  [childData2]="parentData2"
-  (newItemEvent)="addItem($event)"
-></app-child>
-
-<ul>
-  <li *ngFor="let item of items">{{item}}</li>
-</ul>
+<app-page-template [titleHeader]="titleHeader">
+  <section main>
+    <h2>
+      <a
+        class="btn btn-secondary-outlined btn-back"
+        [routerLink]="['/home']"
+      >Back</a>"app-parent.component"
+    </h2>
+    <h4>Parent to Child: Sharing Data with &#64;Input()</h4>
+    <p>Below there is <strong>app-child.component</strong> with "parentData1" and "parentData2" passed.
+    </p>
+    <h4>Child to Parent: Using &#64;Output() to Emit Events</h4>
+    <div class="child-container">
+      <app-child
+        [childData1]="parentData1Requiered"
+        [childData2]="parentData2"
+        (newItemEvent)="addItem($event)"
+      ></app-child>
+      <ul>
+        <p class="text-bold">List of items</p>
+        <li *ngFor="let item of items">{{item}}</li>
+      </ul>
+    </div>
+  </section>
+</app-page-template>

@@ -1,0 +1,32 @@
+@charset "utf-8";
+@use "../../../styles.scss";
+
+:host {
+  width: 100vw;
+  height: 100vh;
+
+  section {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    min-height: 0;
+    max-height: 100vh;
+    padding: 1rem 3rem;
+
+    .child-container {
+      display: flex;
+
+      ul {
+        overflow: auto;
+        width: fit-content;
+        padding-right: 2rem;
+        padding-left: 2rem;
+
+        p {
+          margin-left: -1rem;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+}

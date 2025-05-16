@@ -1,5 +1,8 @@
 <app-page-template [titleHeader]="titleHeader">
-  <section main>
+  <section
+    main
+    class="inner-section"
+  >
     <div class="left-side">
 
       <h2>
@@ -9,7 +12,7 @@
         >Back</a>
         "app-receiver.component"
       </h2>
-      <div class="receivedData">receivedData: <span>{{ receivedData }}</span></div>
+      <div class="receivedData">receivedData: <span class="accent">{{ receivedData }}</span></div>
       <ul>
         <li class="mb-1">
           <p class="text-bold mb-1">ReceiverComponent has: </p>

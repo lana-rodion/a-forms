@@ -1,0 +1,23 @@
+@charset "utf-8";
+@use "../../../../styles.scss";
+
+section .inner {
+  padding: 1rem 3rem;
+  width: 100%;
+  display: flex;
+  gap: 3rem;
+}
+
+pre {
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.75rem;
+  border-radius: 5px;
+  background-color: rgba(231, 207, 255, 0.25);
+  width: fit-content;
+  height: inherit;
+  word-wrap: break-word;
+}
+
+span {
+  color: var(--french-violet);
+}

@@ -1,1 +1,24 @@
-<p>project works!</p>
+<app-page-template [titleHeader]="titleHeader">
+  <section
+    main
+    class="inner-section"
+  >
+    <div class="left-side">
+      <h2>
+        <a
+          class="btn btn-secondary-outlined btn-back"
+          [routerLink]="['/home']"
+        >Back</a>
+        "app-receiver.component"
+      </h2>
+      <pre>&#64;ViewChild('projectCounter') projectCounter!: ElementRef; <br>receive the value of <br>&#64;ViewChild(TaskListComponent) taskList!: TaskListComponent;</pre>
+      <div class="receivedData">projectCounter:
+        <span
+          class="accent"
+          #projectCounter
+        >{{ projectCounter }}</span>
+      </div>
+    </div>
+    <app-task-list></app-task-list>
+  </section>
+</app-page-template>

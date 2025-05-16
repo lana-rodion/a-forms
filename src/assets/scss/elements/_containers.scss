@@ -1,5 +1,7 @@
 @charset "utf-8";
 
+/** FLEX
+========================= */
 .d-flex {
   display: flex;
 }
@@ -21,8 +23,13 @@
   max-height: 100vh;
 }
 
+.align-items-center {
+  align-items: center;
+}
+
 /** SPACING
 ========================= */
+
 .mt-1 {
   margin-top: 1rem;
 }
@@ -33,6 +40,10 @@
 
 .mb-1 {
   margin-bottom: 1rem;
+}
+
+.ml-1 {
+  margin-left: 1rem;
 }
 
 .pt-1 {

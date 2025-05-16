@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CommunicationService {
+  private dataStream = new BehaviorSubject<string>('Initial message');
+  currentData$ = this.dataStream.asObservable();
 
-  constructor() { }
+  transmitData(newMessage: string) {
+    this.dataStream.next(newMessage);
+  }
 }

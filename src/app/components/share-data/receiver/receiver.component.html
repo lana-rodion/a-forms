@@ -1,13 +1,48 @@
 <app-page-template [titleHeader]="titleHeader">
-  <section
-    main
-    class="d-flex flex-column pt-1 pr-3 pb-1 pl-3"
-  >
-    <h2>
-      <a
-        class="btn btn-secondary-outlined btn-back"
-        [routerLink]="['/home']"
-      >Back</a>"app-receiver.component"
-    </h2>
+  <section main>
+    <div class="left-side">
+
+      <h2>
+        <a
+          class="btn btn-secondary-outlined btn-back"
+          [routerLink]="['/home']"
+        >Back</a>
+        "app-receiver.component"
+      </h2>
+      <div class="receivedData">receivedData: <span>{{ receivedData }}</span></div>
+      <ul>
+        <li class="mb-1">
+          <p class="text-bold mb-1">ReceiverComponent has: </p>
+          <pre>receivedData: string = '';</pre>
+        </li>
+        <li class="mb-1">
+          <p class="text-bold mb-1">ReceiverComponent subscribes in ngOnInit() to receive data from
+            CommunicationService:
+          </p>
+          <pre>this.commService.currentData$.subscribe((data) => &lcub;<br> this.receivedData = data; <br>&rcub;);</pre>
+
+        </li>
+        <li class="mb-1">
+          <p class="text-bold mb-1">CommunicationService has: </p>
+          <pre>currentData$ = this.dataStream.asObservable()</pre>
+        </li>
+        <li>
+          <p class="mb-1">The CommunicationService method <span class="text-bold">transmitData(newMessage:
+              string) </span><br>is used in the <span class="text-bold">SenderComponent</span> to send the newMessage
+            from
+            Sender</p>
+          <pre>transmitData(newMessage: string) &lcub;<br>  this.dataStream.next(newMessage); <br>&rcub;</pre>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <app-sender></app-sender>
+      <ul>
+        <li class="mb-1">
+          <p class="text-bold mb-1">SenderComponent transmits new data via CommunicationService method: </p>
+          <pre>publishUpdate() &lcub;<br> this.commService.transmitData('New Data from Sender!'); <br>&rcub;</pre>
+        </li>
+      </ul>
+    </div>
   </section>
 </app-page-template>

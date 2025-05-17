@@ -8,6 +8,9 @@
 
   .menu-item {
     height: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: rgba(231, 207, 255, 0.25);
     padding: 1rem;
 

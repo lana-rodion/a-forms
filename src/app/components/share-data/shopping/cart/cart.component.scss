@@ -1,0 +1,11 @@
+.nested {
+  width: fit-content;
+  height: inherit;
+  padding: 0 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border: 2px solid var(--french-violet);
+  overflow: auto;
+}

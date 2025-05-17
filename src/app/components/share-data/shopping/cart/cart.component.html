@@ -1,0 +1,40 @@
+<app-page-template [titleHeader]="titleHeader">
+  <section
+    main
+    class="inner-section"
+  >
+    <div class="left-side pr-3">
+      <h2>
+        <a
+          class="btn btn-secondary-outlined btn-back"
+          [routerLink]="['/home']"
+        >Back</a>
+        "CartComponent" Page
+      </h2>
+      <p class="mb-1">In this example, the <span class="text-bold">CartComponent</span> acts as the parent component,
+        which contains the <span class="text-bold">ItemListComponent</span> as a child component.
+      </p>
+      <p class="mb-1">
+        The <span class="text-bold">ItemListComponent</span> further contains multiple instances of the
+        <span class="text-bold">CartItemComponent</span> as nested child
+        components.
+      </p>
+      <p class="mb-1">
+        The <span class="text-bold">CheckoutComponent</span> is a sibling component to <span
+          class="text-bold">CartComponent</span>.
+      </p>
+      <p>
+        The shared service, <span class="text-bold">CartService, is injected into CartComponent,
+          ItemListComponent, and CheckoutComponent</span>, allowing them to interact with the cart data.
+      </p>
+      <app-checkout></app-checkout>
+    </div>
+    <div class="nested">
+      <h3>CartComponent nested components</h3>
+      <p>Below is nested app-item-list<br>
+        inside of CartComponent
+      </p>
+      <app-item-list></app-item-list>
+    </div>
+  </section>
+</app-page-template>

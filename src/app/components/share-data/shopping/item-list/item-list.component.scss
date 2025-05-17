@@ -1,0 +1,10 @@
+@charset "utf-8";
+@use "../../../../../styles.scss";
+
+section {
+  display: block;
+  width: 400px;
+  padding: 1rem;
+  margin: 1rem 0;
+  border: 2px solid var(--orange-red);
+}

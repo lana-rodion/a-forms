@@ -1,0 +1,16 @@
+<section>
+  <h3>This is ItemListComponent</h3>
+
+  <p class="mt-1 mb-1">
+    Below is <span class="text-bold">"CartItemComponent"</span> which will be added after button click "Add Item"
+  </p>
+  <app-cart-item
+    *ngFor="let item of items"
+    [item]="item"
+  ></app-cart-item>
+
+  <button
+    class="btn btn-submit mt-1"
+    (click)="addToCart('New Item')"
+  >Add Item</button>
+</section>

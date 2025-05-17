@@ -1,0 +1,9 @@
+<section>
+  <h3>CheckoutComponent</h3>
+  <button
+    class="btn btn-submit"
+    (click)="viewCart()"
+  >Check Added Items</button>
+  <p class="mt-1">Added Items: {{ cartItems.length }}</p>
+  <div>{{cartItems | json }}</div>
+</section>

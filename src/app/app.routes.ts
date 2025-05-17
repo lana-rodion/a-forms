@@ -6,6 +6,7 @@ import { ReceiverComponent } from './components/share-data/receiver/receiver.com
 import { ProjectComponent } from './components/share-data/project/project.component';
 import { LocalstorageComponent } from './components/share-data/localstorage/localstorage.component';
 import { RouteparamsComponent } from './components/share-data/routeparams/routeparams.component';
+import { CartComponent } from './components/share-data/shopping/cart/cart.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -13,6 +14,7 @@ export const routes: Routes = [
   { path: 'sharedata', component: ShareDataComponent },
   { path: 'sharedata/inputOutput', component: ParentComponent },
   { path: 'sharedata/behaviorSubject', component: ReceiverComponent },
+  { path: 'sharedata/behaviorSubject/carts', component: CartComponent },
   { path: 'sharedata/viewChild', component: ProjectComponent },
   { path: 'sharedata/localStorage', component: LocalstorageComponent },
   { path: 'sharedata/routeParams', component: RouteparamsComponent },
